@@ -50,4 +50,21 @@ def run():
     print("Pulse ran successfully")
 if __name__=="__main__":
   run()
-    
+import smtplib
+import os
+from email.mime.text import MIMEText
+
+def send_email(summary):
+    sender = os.environ["EMAIL_USER"]
+    password = os.environ["EMAIL_PASSWORD"]
+    recipient = os.environ["EMAIL_TO"]
+
+    msg = MIMEText(summary)
+    msg["Subject"] = "Pulse Daily Summary"
+    msg["From"] = sender
+    msg["To"] = recipient
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(sender, password)
+        smtp.send_message(msg) 
+    print("Email Sent Successfully!")
