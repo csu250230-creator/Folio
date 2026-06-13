@@ -18,7 +18,7 @@ jobs:
       - name: Run Pulse bot
         run: python bot.py
       - name: upload summary as artifact
-        uses:actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: daily-summary
           path: daily_summary.txt
