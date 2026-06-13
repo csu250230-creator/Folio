@@ -45,11 +45,13 @@ def run():
   '''Main entry point- run by GitHub Actions'''
   summary=build_summary()
   print(summary)
+  send_email(summary)
   with open("daily_summary.txt","w",encoding="utf-8") as f:
     f.write(summary)
     print("Pulse ran successfully")
 if __name__=="__main__":
   run()
+  
 import smtplib
 import os
 from email.mime.text import MIMEText
