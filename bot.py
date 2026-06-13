@@ -9,14 +9,14 @@ def get_weather(city="Thiruvananthapuram"):
   try:
     response=requests.get(url,timeout=10)
     response.raise_for_status()
-    return response.text.strip
+    return response.text.strip()
   except Exception as e:
     return f"Weather unavailable({e})"
 def get_quote():
   '''Fetch random motivational quotes from ZenQuotes'''
   url="https://zenquotes.io/api/random"
   try:
-    response==requests.get(url,timeout=10)
+    response=requests.get(url,timeout=10)
     response.raise_for_status()
     data=response.json()
     quote=data[0]["q"]
